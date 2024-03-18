@@ -1,0 +1,60 @@
+#include "APIG24.h"
+
+Grafo ConstruirGrafo() {
+  // TODO: leer desde stdin
+  Grafo grafo = (Grafo)malloc(sizeof(GrafoSt));
+  if (grafo == NULL) {
+    fprintf(stderr, "Error: No se pudo asignar memoria para el grafo.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // GrafoSt grafo;
+  u32 n, m, v, u;
+  char line[1000];
+
+  // Ignorar las líneas que comienzan con 'c'
+  while (1) {
+    if (fgets(line, sizeof(line), stdin) == NULL) {
+      printf("Error al leer la entrada.\n");
+      exit(EXIT_FAILURE);
+    }
+    if (line[0] != 'c')
+      break;
+  }
+
+  scanf("p edge %d %d", &n, &m);
+  grafo->n_vertices = n;
+  grafo->m_lados = m;
+
+  grafo->vertices = (u32 **)malloc(grafo->n_vertices * sizeof(u32 *));
+  if (grafo->vertices == NULL) {
+    fprintf(stderr, "Error: No se pudo asignar memoria para los vertices.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Ignorar los comentarios que siguen a
+
+  for (int i = 0; i < m; i++) {
+    scanf("e %d %d", &u, &v);
+    jj
+
+        printf("Arista %d: %d - %d\n", i + 1, u,
+               v); // Aquí puedes hacer lo que necesites con los nodos u y v
+  }
+}
+
+void DestruirGrafo(Grafo G) {}
+
+u32 NumeroDeVertices(Grafo G) { return G->n_vertices; }
+
+u32 NumeroDeLados(Grafo G) { return G->m_lados; }
+
+u32 Delta(Grafo G) { return G->delta; }
+
+u32 Grado(u32 i, Grafo G) {}
+color Color(u32 i, Grafo G) {}
+u32 Vecino(u32 j, u32 i, Grafo G) {}
+
+void AsignarColor(color x, u32 i, Grafo G) {}
+void ExtraerColores(Grafo G, color *Color) {}
+void ImportarColores(color *Color, Grafo G) {}
