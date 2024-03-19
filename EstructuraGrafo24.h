@@ -13,7 +13,7 @@ typedef u32 color;
 typedef struct {
   color color;
   u32 grado;
-  u32 *vecinos;
+  Vertice *vecinos;
 } Vertice;
 
 typedef struct {

@@ -61,9 +61,9 @@ Grafo ConstruirGrafo() {
       fprintf(stderr, "Error: No se pudo asignar memoria para los vertices.\n");
       exit(EXIT_FAILURE);
     }
-    U->vecinos[U->grado] = v; // Aca mas que el numero podriamos agregar un nodo
-                              // q señale al vertice v
-    V->vecinos[V->grado] = u; // pero no creo que sea necesario
+    U->vecinos[U->grado] = G->vertices[v]; // Ahi puse lo del pointer que dijiste
+                              
+    V->vecinos[V->grado] = G->vertices[u]; //este si esta bien, porque agrega a U como vecino de V, tanto U como V tienen que tenerse como vecinos
     V->grado += 1;
     U->grado += 1;
   }
@@ -101,7 +101,7 @@ u32 Grado(u32 i, Grafo G) {
 color Color(u32 i, Grafo G) {
   if (i >= G->n_vertices)
     return 4294967295; // 2^32 - 1
-
+  
   return G->vertices[i].color;
 }
 
