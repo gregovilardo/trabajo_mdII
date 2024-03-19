@@ -49,21 +49,21 @@ Grafo ConstruirGrafo() {
     }
 
     Vertice *V = &(G->vertices[v]);
-    V->vecinos = (u32 *)realloc(V->vecinos, (V->grado + 1) * sizeof(Vertice));
+    V->vecinos = (Vertice *)realloc(V->vecinos, (V->grado + 1) * sizeof(Vertice));
     if (V->vecinos == NULL) {
       fprintf(stderr, "Error: No se pudo asignar memoria para los vertices.\n");
       exit(EXIT_FAILURE);
     }
 
     Vertice *U = &(G->vertices[u]);
-    U->vecinos = (u32 *)realloc(U->vecinos, (U->grado + 1) * sizeof(Vertice));
+    U->vecinos = (Vertice *)realloc(U->vecinos, (U->grado + 1) * sizeof(Vertice));
     if (U->vecinos == NULL) {
       fprintf(stderr, "Error: No se pudo asignar memoria para los vertices.\n");
       exit(EXIT_FAILURE);
     }
-    U->vecinos[U->grado] = G->vertices[v]; // Ahi puse lo del pointer que dijiste
+    U->vecinos[U->grado] = &G->vertices[v];
                               
-    V->vecinos[V->grado] = G->vertices[u]; //este si esta bien, porque agrega a U como vecino de V, tanto U como V tienen que tenerse como vecinos
+    V->vecinos[V->grado] = &G->vertices[u];
     V->grado += 1;
     U->grado += 1;
   }
